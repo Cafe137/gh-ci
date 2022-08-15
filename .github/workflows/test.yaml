@@ -18,5 +18,7 @@ jobs:
                   node-version: 16
             - name: Install deps
               run: npm ci
-            - name: Run print.js
-              run: node print.js
+            - name: Print git status
+              run: node git-status.js
+            - name: Print process.env
+              run: node process-env.js

@@ -7,10 +7,11 @@ on:
                 required: true
 jobs:
     demo:
-        runs-on: ubuntu-latest
         strategy:
             matrix:
                 node-version: [16.x, 18.x]
+                os: [ubuntu-latest, macos-latest, windows-latest]
+        runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
@@ -22,3 +23,9 @@ jobs:
               run: node git-status.js
             - name: Print process.env
               run: node process-env.js
+            - name: Clone complementary repository
+              run: git clone https://github.com/Cafe137/gh-ci-complement.git
+            - name: Setup complementary repository
+              run: cd ./gh-ci-complement && npm ci
+            - name: Run complementary repository
+              run: cd ./gh-ci-complement && node index.js

@@ -22,6 +22,6 @@ jobs:
             - name: Print process.env
               run: node process-env.js
             - name: Install complementary repository
-              run: npm install https://github.com/Cafe137/gh-ci-complement.git
+              run: npm install https://github.com/Cafe137/gh-ci-complement.git#
             - name: Run complementary repository
               run: node node_modules/gh-ci-complement/index.js

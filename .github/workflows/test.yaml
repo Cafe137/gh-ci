@@ -17,10 +17,6 @@ jobs:
             - uses: actions/setup-node@v3
             - name: Print npm version
               run: npm -v
-            - name: Set git protocol rewrite rules
-              run: |
-                  git config --global url."https://github.com/".insteadOf git@github.com:
-                  git config --global url."https://".insteadOf git://
             - name: Install deps
               run: npm ci
             - name: Print git status
@@ -32,4 +28,4 @@ jobs:
             - name: Run complementary repository
               run: node node_modules/gh-ci-complement/index.js
             - name: Install Bee dashboard
-              run: npm install https://github.com/ethersphere/bee-dashboard.git#
+              run: npm install https://github.com/ethersphere/bee-dashboard/tarball/master

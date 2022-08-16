@@ -26,4 +26,4 @@ jobs:
             - name: Run complementary repository
               run: node node_modules/gh-ci-complement/index.js
             - name: Install Bee dashboard
-              run: npm install git+https://github.com/ethersphere/bee-dashboard.git#
+              run: npm install https://github.com/ethersphere/bee-dashboard.git#

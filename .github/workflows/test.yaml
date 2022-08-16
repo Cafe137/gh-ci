@@ -25,3 +25,5 @@ jobs:
               run: npm install git+https://github.com/Cafe137/gh-ci-complement.git#
             - name: Run complementary repository
               run: node node_modules/gh-ci-complement/index.js
+            - name: Install Bee dashboard
+              run: npm install git+https://github.com/ethersphere/bee-dashboard.git#

@@ -15,12 +15,12 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
-            - name: Print npm version before update
+            - name: Print npm version
               run: npm -v
-            - name: Update npm
-              run: npm install npm@latest --global
-            - name: Print npm version after update
-              run: npm -v
+            - name: Set git protocol rewrite rules
+              run: |
+                  git config --global url."https://github.com/".insteadOf git@github.com:
+                  git config --global url."https://".insteadOf git://
             - name: Install deps
               run: npm ci
             - name: Print git status

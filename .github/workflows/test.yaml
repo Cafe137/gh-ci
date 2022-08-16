@@ -15,17 +15,13 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
-              with:
-                  node-version: 16
             - name: Install deps
               run: npm ci
             - name: Print git status
               run: node git-status.js
             - name: Print process.env
               run: node process-env.js
-            - name: Clone complementary repository
-              run: git clone https://github.com/Cafe137/gh-ci-complement.git
-            - name: Setup complementary repository
-              run: cd ./gh-ci-complement && npm ci
+            - name: Install complementary repository
+              run: npm install https://github.com/Cafe137/gh-ci-complement.git
             - name: Run complementary repository
-              run: cd ./gh-ci-complement && node index.js
+              run: node node_modules/gh-ci-complement/index.js

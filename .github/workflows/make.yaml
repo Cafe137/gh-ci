@@ -22,4 +22,4 @@ jobs:
             - name: Run ncc
               run: ncc build esm.js -o dist
             - name: Run pkg
-              run: pkg dist/esm.js
+              run: pkg dist/index.js

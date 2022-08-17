@@ -16,6 +16,7 @@ jobs:
             - name: Install ncc
               run: npm install --global @vercel/ncc
             - name: Install pkg
+              run: npm install --global pkg
             - name: Create dist/
               run: mkdir dist
             - name: Run ncc

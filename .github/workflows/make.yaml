@@ -23,15 +23,20 @@ jobs:
               run: ncc build esm.js -o dist
             - name: Run pkg
               run: pkg dist/index.js
+            - name: Rename binaries
+              run: |
+                  mv index-linux Example-Linux
+                  mv index-macos Example-MacOS
+                  mv index-win.exe Example-Windows.exe
             - uses: actions/upload-artifact@v3
               with:
                   name: Example-Linux
-                  path: index-linux
+                  path: Example-Linux
             - uses: actions/upload-artifact@v3
               with:
                   name: Example-MacOS
-                  path: index-macos
+                  path: Example-MacOS
             - uses: actions/upload-artifact@v3
               with:
-                  name: Example-Windows
-                  path: index-win.exe
+                  name: Example-Windows.exe
+                  path: Example-Windows.exe

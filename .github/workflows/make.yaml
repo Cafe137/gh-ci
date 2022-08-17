@@ -1,0 +1,24 @@
+name: Make binary
+on: [workflow_dispatch]
+
+jobs:
+    make:
+        strategy:
+            matrix:
+                node-version: [16.x]
+                os: [ubuntu-latest]
+        runs-on: ${{ matrix.os }}
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+            - name: Install deps
+              run: npm ci
+            - name: Install ncc
+              run: npm install --global @vercel/ncc
+            - name: Install pkg
+            - name: Create dist/
+              run: mkdir dist
+            - name: Run ncc
+              run: ncc build esm.js -o dist
+            - name: Run pkg
+              run: pkg dist/esm.js
